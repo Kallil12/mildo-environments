@@ -60,6 +60,10 @@ install_texlive() {
   apt-get install -y texlive
 }
 
+install_spotify() {
+  snap install spotify
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -93,6 +97,7 @@ install_sublime_text
 install_shellcheck
 install_virtualbox
 install_texlive
+install_spotify
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history

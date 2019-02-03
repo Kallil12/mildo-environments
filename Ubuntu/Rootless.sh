@@ -34,7 +34,7 @@ customize_gnome_terminal() {
 }
 
 customize_gnome_dock() {
-  gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'sublime_text.desktop', 'gnome-terminal.desktop', 'nautilus.desktop', 'virtualbox.desktop', 'firefox.desktop']"
+  gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'sublime_text.desktop', 'spotify_spotify.desktop', 'gnome-terminal.desktop', 'nautilus.desktop', 'virtualbox.desktop', 'firefox.desktop']"
   gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 }
 
