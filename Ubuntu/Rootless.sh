@@ -36,6 +36,8 @@ customize_gnome_terminal() {
 customize_gnome_dock() {
   gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'sublime_text.desktop', 'spotify_spotify.desktop', 'gnome-terminal.desktop', 'nautilus.desktop', 'virtualbox.desktop', 'firefox.desktop']"
   gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+  gsettings set org.gnome.shell.extensions.desktop-icons show-home false
+  gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
 }
 
 hide_snap_folder() {
