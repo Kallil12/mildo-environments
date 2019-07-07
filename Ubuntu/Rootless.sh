@@ -16,9 +16,9 @@ configure_sublime_text() {
 clone_github_repositories() {
   ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C "contact@mildo.me"
   ssh-add
-  curl -s --user Mildin "https://api.github.com/user/keys" -d "{\"title\": \"$HOSTNAME\", \"key\": \"$(cat ~/.ssh/id_rsa.pub)\"}"
+  curl -s --user Mildo "https://api.github.com/user/keys" -d "{\"title\": \"$HOSTNAME\", \"key\": \"$(cat ~/.ssh/id_rsa.pub)\"}"
   mkdir ~/GitHub/ && cd ~/GitHub/
-  curl -s --user Mildin "https://api.github.com/user/repos" | grep ssh_url | cut -d "\"" -f 4 | xargs -L1 git clone
+  curl -s --user Mildo "https://api.github.com/user/repos" | grep ssh_url | cut -d "\"" -f 4 | xargs -L1 git clone
   cd "$OLDPWD"
 }
 
