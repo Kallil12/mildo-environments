@@ -63,6 +63,12 @@ install_spotify() {
   snap install spotify
 }
 
+install_python() {
+  apt-get install -y python3 python3-pip
+  pip3 install virtualenv virtualenvwrapper
+  printf "\\n# Activate virtualenvwrapper\\nexport VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\\nexport WORKON_HOME=~/.virtualenvs\\nsource /usr/local/bin/virtualenvwrapper.sh\\nexport PIP_REQUIRE_VIRTUALENV=true\\n" >> ~/.bashrc
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -97,6 +103,7 @@ install_shellcheck
 install_virtualbox
 install_texlive
 install_spotify
+install_python
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history
