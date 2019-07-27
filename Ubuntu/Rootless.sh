@@ -1,5 +1,9 @@
 #!/bin/bash
 
+create_virtualenvs() {
+  mkvirtualenv django && pip install django && deactivate
+}
+
 configure_git() {
   git config --global user.name "Romildo Oliveira Souza Júnior"
   git config --global user.email contact@mildo.me
@@ -44,6 +48,7 @@ hide_snap_folder() {
   echo "snap" >> ~/.hidden
 }
 
+create_virtualenvs
 configure_git
 configure_sublime_text
 clone_github_repositories

@@ -2,7 +2,7 @@
 
 run_scripts() {
   sudo ./Root.sh
-  ./Rootless.sh
+  bash -i ./Rootless.sh
 }
 
 docker_as_non_root() {
