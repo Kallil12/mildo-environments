@@ -2,6 +2,7 @@
 
 create_virtualenvs() {
   mkvirtualenv django && pip install django
+  mkvirtualenv jupyter && pip install jupyterlab
   mkvirtualenv nodejs && pip install nodeenv && nodeenv -p
   deactivate
 }
