@@ -1,7 +1,9 @@
 #!/bin/bash
 
 create_virtualenvs() {
-  mkvirtualenv django && pip install django && deactivate
+  mkvirtualenv django && pip install django
+  mkvirtualenv nodejs && pip install nodeenv && nodeenv -p
+  deactivate
 }
 
 configure_git() {
@@ -15,6 +17,7 @@ configure_sublime_text() {
   cp Support\ Files/Sublime\ Text/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/
   wget -P ~/.config/sublime-text-3/Installed\ Packages/ https://packagecontrol.io/Package%20Control.sublime-package
   cp Support\ Files/Sublime\ Text/Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/
+  cp Support\ Files/Sublime\ Text/JavaScript\ \(Babel\).sublime-settings ~/.config/sublime-text-3/Packages/User/
 }
 
 clone_github_repositories() {

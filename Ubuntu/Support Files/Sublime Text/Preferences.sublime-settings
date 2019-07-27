@@ -5,6 +5,7 @@
   "font_size": 16.0,
   "ignored_packages":
   [
+    "JavaScript",
     "Vintage"
   ],
   "rulers":
