@@ -69,6 +69,15 @@ install_python() {
   printf "\\n# Activate virtualenvwrapper\\nexport VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\\nexport WORKON_HOME=~/.virtualenvs\\nsource /usr/local/bin/virtualenvwrapper.sh\\nexport PIP_REQUIRE_VIRTUALENV=true\\n" >> ~/.bashrc
 }
 
+install_flatpak() {
+  apt-get install -y flatpak
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+install_feedreader() {
+  flatpak install -y flathub org.gnome.FeedReader
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -104,6 +113,8 @@ install_virtualbox
 install_texlive
 install_spotify
 install_python
+install_flatpak
+install_feedreader
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history
