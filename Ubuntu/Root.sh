@@ -78,6 +78,10 @@ install_feedreader() {
   flatpak install -y flathub org.gnome.FeedReader
 }
 
+install_axel() {
+  apt-get install -y axel
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -115,6 +119,7 @@ install_spotify
 install_python
 install_flatpak
 install_feedreader
+install_axel
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history
