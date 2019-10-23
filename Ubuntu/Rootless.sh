@@ -1,12 +1,5 @@
 #!/bin/bash
 
-create_virtualenvs() {
-  mkvirtualenv django && pip install django
-  mkvirtualenv jupyter && pip install jupyterlab
-  mkvirtualenv nodejs && pip install nodeenv && nodeenv -p
-  deactivate
-}
-
 configure_git() {
   git config --global user.name "Romildo Oliveira Souza Júnior"
   git config --global user.email contact@mildo.me
@@ -54,7 +47,6 @@ hide_snap_folder() {
   printf "\\n# Hide snap folder from ls command\\n%s\\n" "alias ls='${BASH_ALIASES[ls]} -Isnap'" >> ~/.bashrc
 }
 
-create_virtualenvs
 configure_git
 configure_sublime_text
 clone_github_repositories
