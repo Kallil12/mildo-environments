@@ -51,6 +51,7 @@ customize_gnome_dock() {
 
 hide_snap_folder() {
   echo "snap" >> ~/.hidden
+  printf "\\n# Hide snap folder from ls command\\n%s\\n" "alias ls='${BASH_ALIASES[ls]} -Isnap'" >> ~/.bashrc
 }
 
 create_virtualenvs
