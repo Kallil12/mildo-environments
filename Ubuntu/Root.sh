@@ -73,6 +73,10 @@ install_axel() {
   apt-get install -y axel
 }
 
+install_telegram() {
+  snap install telegram-desktop
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -109,6 +113,7 @@ install_texlive
 install_spotify
 install_python
 install_axel
+install_telegram
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history
