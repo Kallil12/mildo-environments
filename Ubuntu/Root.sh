@@ -77,6 +77,13 @@ install_telegram() {
   snap install telegram-desktop
 }
 
+install_wine() {
+  wget -q -O - https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
+  add-apt-repository "deb https://dl.winehq.org/wine-builds/ubuntu/ $(lsb_release -sc) main"
+  apt-get update
+  apt-get install -y winehq-stable
+}
+
 remove_folders_of_home() {
   rm -rf -- ~/*
 }
@@ -114,6 +121,7 @@ install_spotify
 install_python
 install_axel
 install_telegram
+install_wine
 remove_folders_of_home
 remove_nautilus_bookmarks
 disable_bash_history
