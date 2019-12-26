@@ -6,14 +6,6 @@ configure_git() {
   git config --global push.default simple
 }
 
-configure_sublime_text() {
-  mkdir -p ~/.config/sublime-text-3/Packages/User/
-  cp Support\ Files/Sublime\ Text/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/
-  wget -P ~/.config/sublime-text-3/Installed\ Packages/ https://packagecontrol.io/Package%20Control.sublime-package
-  cp Support\ Files/Sublime\ Text/Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/
-  cp Support\ Files/Sublime\ Text/JavaScript\ \(Babel\).sublime-settings ~/.config/sublime-text-3/Packages/User/
-}
-
 clone_github_repositories() {
   ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -C "contact@mildo.me"
   ssh-add
@@ -21,6 +13,10 @@ clone_github_repositories() {
   mkdir ~/GitHub/ && cd ~/GitHub/
   curl -s --user Mildo "https://api.github.com/user/repos" | grep ssh_url | cut -d "\"" -f 4 | xargs -L1 git clone
   cd "$OLDPWD"
+}
+
+customize_gnome() {
+  gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 }
 
 customize_gnome_terminal() {
@@ -35,7 +31,7 @@ customize_gnome_terminal() {
 }
 
 customize_gnome_dock() {
-  gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'sublime_text.desktop', 'spotify_spotify.desktop', 'gnome-terminal.desktop', 'nautilus.desktop', 'virtualbox.desktop', 'firefox.desktop']"
+  gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'code_code.desktop', 'spotify_spotify.desktop', 'gnome-terminal.desktop', 'nautilus.desktop', 'virtualbox.desktop', 'firefox.desktop', 'telegram-desktop_telegramdesktop.desktop', 'whatsdesk_whatsdesk.desktop']"
   gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
   gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
   gsettings set org.gnome.shell.extensions.desktop-icons show-home false
@@ -47,9 +43,37 @@ hide_snap_folder() {
   printf "\\n# Hide snap folder from ls command\\n%s\\n" "alias ls='${BASH_ALIASES[ls]} -Isnap'" >> ~/.bashrc
 }
 
+install_asdf() {
+  git clone https://github.com/asdf-vm/asdf.git /home/mildo/.asdf
+  cd /home/mildo/.asdf && git checkout "$(git describe --abbrev=0 --tags)" && cd -
+  printf "\\n# Activate asdf-vm\\nsource ~/.asdf/asdf.sh\\nsource ~/.asdf/completions/asdf.bash\\n" >> /home/mildo/.bashrc
+  source ~/.asdf/asdf.sh
+}
+
+install_asdf_plugins() {
+  asdf plugin-add python
+  asdf install python 3.8.0
+  asdf global python 3.8.0
+  pip install --upgrade pip
+  printf "\\nexport PIP_REQUIRE_VIRTUALENV=true\\n" >> ~/.bashrc
+}
+
+install_docker_compose() {
+  pip install docker-compose
+  asdf reshim
+}
+
+install_vscode_settings_sync() {
+  code --install-extension shan.code-settings-sync
+}
+
 configure_git
-configure_sublime_text
 clone_github_repositories
+customize_gnome
 customize_gnome_terminal
 customize_gnome_dock
 hide_snap_folder
+install_asdf
+install_asdf_plugins
+install_docker_compose
+install_vscode_settings_sync
